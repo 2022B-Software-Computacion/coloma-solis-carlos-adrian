@@ -25,7 +25,6 @@ class MainForm: JFrame("CRUD") {
 
     private val salida: JTextArea = JTextArea(8, 35).also {
         it.lineWrap = true
-
     }
 
     private val panelCampos: JPanel
@@ -45,7 +44,6 @@ class MainForm: JFrame("CRUD") {
         val id: Int = campoId.text.toInt()
         val personaEncontrada : Persona? = PersonaDAO.read(id)
         if(personaEncontrada != null) {
-            salida.text = personaEncontrada.toString()
             campoId.text = personaEncontrada.id.toString()
             campoNombre.text = personaEncontrada.nombre
             campoFechaNacimiento.date = personaEncontrada.fechaNacimiento
@@ -74,9 +72,19 @@ class MainForm: JFrame("CRUD") {
             JOptionPane.showMessageDialog(this, "No se encontro a la persona que quieres eliminar")
     }}
 
+    private val botonMascotas: JButton = JButton("Mascotas").also{it.addActionListener{
+        val idPersona = campoId.text.toInt()
+        val persona = PersonaDAO.read(idPersona)
+        if(persona != null){
+            val mascotasDialog = MascotasForm(this, persona)
+            mascotasDialog.isVisible = true
+        }else
+            JOptionPane.showMessageDialog(this, "Persona no encontrada")
+
+    }}
     init{
         defaultCloseOperation = EXIT_ON_CLOSE
-        setSize(400, 350)
+        setSize(500, 350)
         setLocationRelativeTo(null)
         this.layout = BorderLayout(3, 3)
         panelCampos = JPanel(GridLayout(5, 2))
@@ -85,26 +93,23 @@ class MainForm: JFrame("CRUD") {
         this.add(panelBotones, BorderLayout.CENTER)
         this.add(panelSalida, BorderLayout.SOUTH)
 
-
         panelCampos.add(idLabel)
         panelCampos.add(campoId)
-
         panelCampos.add(nombreLabel)
         panelCampos.add(campoNombre)
-
         panelCampos.add(fechaNacimientoLabel)
         panelCampos.add(campoFechaNacimiento)
-
         panelCampos.add(estaCasadoLabel)
         panelCampos.add(campoEstaCasado)
-
         panelCampos.add(pesoLabel)
         panelCampos.add(campoPeso)
+
 
         panelBotones.add(botonCreate)
         panelBotones.add(botonRead)
         panelBotones.add(botonUpdate)
         panelBotones.add(botonDelete)
+        panelBotones.add(botonMascotas)
 
         mostrarPersonas()
     }

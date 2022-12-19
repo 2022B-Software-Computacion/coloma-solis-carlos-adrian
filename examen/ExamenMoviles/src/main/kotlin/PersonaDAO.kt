@@ -32,12 +32,19 @@ object PersonaDAO : DAO<Persona>() {
     }
 
     override fun update(entidad: Persona) {
-        delete(entidad.id)
-        create(entidad)
+        val entidadUpdate = PersonaDAO.read(entidad.id)
+        if(entidadUpdate != null){
+            entidadUpdate.nombre = entidad.nombre
+            entidadUpdate.fechaNacimiento = entidad.fechaNacimiento
+            entidadUpdate.estaCasado = entidad.estaCasado
+            entidadUpdate.peso = entidad.peso
+        }
+
+
         save()
     }
 
-    private fun save(){
+    fun save(){
         File(filePath).writeText(Json.encodeToString(personas))
 
     }

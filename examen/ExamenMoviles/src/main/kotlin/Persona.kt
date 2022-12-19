@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 @Serializable()
-data class Persona(val id: Int, val nombre: String, @Serializable(with = DateSerializer::class) val fechaNacimiento: Date, val estaCasado: Boolean, val peso: Float){
+data class Persona(val id: Int, var nombre: String, @Serializable(with = DateSerializer::class) var fechaNacimiento: Date, var estaCasado: Boolean, var peso: Float){
     val mascotas : ArrayList<Mascota> = ArrayList()
     constructor(id: Int, nombre: String, fechaNacimiento: String, estaCasado: Boolean, peso: Float ) : this(
         id, nombre,
