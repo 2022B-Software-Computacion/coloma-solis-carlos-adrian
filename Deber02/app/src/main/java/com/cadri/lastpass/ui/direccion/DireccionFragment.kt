@@ -1,15 +1,16 @@
-package com.cadri.lastpass.ui.gallery
+package com.cadri.lastpass.ui.direccion
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cadri.lastpass.databinding.FragmentGalleryBinding
 
-class GalleryFragment : Fragment() {
+class DireccionFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
 
@@ -22,19 +23,18 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
-
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.rvDirecciones.layoutManager = LinearLayoutManager(context)
+        binding.rvDirecciones.adapter = DireccionAdapter()
+        binding.rvDirecciones.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

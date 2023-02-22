@@ -1,12 +1,10 @@
-package com.cadri.lastpass.ui.home
+package com.cadri.lastpass.ui.contrasenas
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +13,6 @@ import com.cadri.lastpass.R
 
 
 class ContrasenasFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
 
     override fun onCreateView(
