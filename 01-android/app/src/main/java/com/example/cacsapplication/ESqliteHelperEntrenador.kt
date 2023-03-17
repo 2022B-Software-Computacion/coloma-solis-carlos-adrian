@@ -26,6 +26,7 @@ class ESqliteHelperEntrenador(contexto: Context?): SQLiteOpenHelper(contexto,
     fun crearEntrenador(nombre: String, descripcion: String): Boolean{
         val basedatosEscritura = writableDatabase
         val valoresAGuardar = ContentValues()
+
         valoresAGuardar.put("nombre", nombre)
         valoresAGuardar.put("descripcion", descripcion)
 
@@ -70,14 +71,12 @@ class ESqliteHelperEntrenador(contexto: Context?): SQLiteOpenHelper(contexto,
                 val nombre = resultadoConsultaLectura.getString(1)
                 val descripcion = resultadoConsultaLectura.getString(2)
                 if(id != null){
-                    usuarioEncontrado = BEntrenador(0, "", "")
-                    usuarioEncontrado.id = id
-                    usuarioEncontrado.nombre = nombre
-                    usuarioEncontrado.descripcion = descripcion
+                    usuarioEncontrado = BEntrenador(id, nombre, descripcion)
                     arreglo.add(usuarioEncontrado)
                 }
             } while(resultadoConsultaLectura.moveToNext())
-        }
+        }else
+            println("No existe el usuario")
 
         resultadoConsultaLectura.close()
         baseDatosLectura.close()

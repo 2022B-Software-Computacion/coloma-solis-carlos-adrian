@@ -10,12 +10,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="24dp"
         android:background="@color/background_text"
         android:text="@string/hola_mundo"
         android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,52 +23,110 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="55dp"
         android:text="Hello World!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_ciclo_vida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Ciclo Vida"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_recycler_view"
+        app:layout_constraintStart_toStartOf="@+id/btn_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/btn_recycler_view" />
 
     <Button
         android:id="@+id/btn_ir_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="List view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ciclo_vida"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="@+id/btn_ciclo_vida"
-        tools:layout_editor_absoluteY="778dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ciclo_vida" />
 
     <Button
         android:id="@+id/btn_intent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:text="i_explicito"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/btn_ciclo_vida"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_ciclo_vida"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btn_ir_intent_implicito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="i_implicito"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="317dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_intent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_intent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_intent" />
+
+    <Button
+        android:id="@+id/btn_crud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="SQLITE"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_implicito" />
+
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Recycler view"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crud"
+        app:layout_constraintStart_toStartOf="@+id/btn_crud"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crud" />
+
+    <Button
+        android:id="@+id/btn_ir_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Maps"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_list_view"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_list_view"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_list_view" />
+
+    <Button
+        android:id="@+id/btn_intent_firebase_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Firebase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_maps"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_maps"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_maps"
+        app:layout_constraintVertical_bias="0.118" />
+
+    <Button
+        android:id="@+id/btn_intent_firestore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Firestore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_intent_firebase_ui"
+        app:layout_constraintVertical_bias="0.105" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.cacsapplication.IFirebaseUIAuth
 
 class MainActivity : AppCompatActivity() {
     val contenidoIntentExplicito = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        EBaseDeDatos.tablaEntrenador = ESqliteHelperEntrenador(this)
+        var path : String = EBaseDeDatos.tablaEntrenador!!.writableDatabase.path
+        Toast.makeText(this, path, Toast.LENGTH_LONG).show()
         val botonCicloVida = findViewById<Button>(R.id.btn_ciclo_vida)
         botonCicloVida.setOnClickListener{
             irActividad(ACicloVida::class.java)
@@ -91,7 +95,29 @@ class MainActivity : AppCompatActivity() {
                 abrirActividadConParametros(CIntentExplicitoParametros::class.java)
             }
 
-        val dbHelper = ESqliteHelperEntrenador(this.baseContext)
+        findViewById<Button>(R.id.btn_crud).setOnClickListener {
+            irActividad(ECrudEntrenador::class.java)
+        }
+
+        val botonRView = findViewById<Button>(R.id.btn_recycler_view)
+        botonRView.setOnClickListener {
+            irActividad(GRecyclerView::class.java)
+        }
+
+        val botonMaps = findViewById<Button>(R.id.btn_ir_maps)
+        botonMaps.setOnClickListener {
+            irActividad(HGoogleMapsActivity::class.java)
+        }
+
+        val botonFirebaseUI = findViewById<Button>(R.id.btn_intent_firebase_ui)
+        botonFirebaseUI.setOnClickListener {
+            irActividad(IFirebaseUIAuth::class.java)
+        }
+
+        val botonFirestore = findViewById<Button>(R.id.btn_intent_firestore)
+        botonFirestore.setOnClickListener {
+            irActividad(JFirebaseStore::class.java)
+        }
 
     }
 

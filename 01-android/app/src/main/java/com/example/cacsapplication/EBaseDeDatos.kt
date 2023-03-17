@@ -1,8 +1,11 @@
 package com.example.cacsapplication
 
-class EBaseDeDatos {
+import android.content.Context
+
+class EBaseDeDatos() {
     companion object {
         var tablaEntrenador: ESqliteHelperEntrenador? = null
-
     }
+
+
 }

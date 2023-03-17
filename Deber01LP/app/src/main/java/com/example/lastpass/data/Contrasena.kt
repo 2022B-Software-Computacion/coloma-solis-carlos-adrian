@@ -1,3 +1,3 @@
 package com.example.lastpass.data
 
-data class Contrasena()
+data class Contrasena(val nombre: String, val usuario: String, val contrasena: String, val url: String)
