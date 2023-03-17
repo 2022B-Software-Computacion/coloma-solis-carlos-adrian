@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.cadri.examen2.data.MascotaDaoFirebase
 import com.cadri.examen2.data.MascotaDaoMemoria
 import com.cadri.examen2.data.PersonaDaoMemoria
 import com.cadri.examen2.databinding.MascotaLayoutBinding
 import java.text.SimpleDateFormat
 
 class MascotaAdapter(val mascotas: List<Mascota>, val navController: NavController, val idDueno: Int) : RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder>(){
+
     inner class MascotaViewHolder(val mascotaLayoutBinding: MascotaLayoutBinding): RecyclerView.ViewHolder(mascotaLayoutBinding.root), View.OnCreateContextMenuListener{
         fun bind(mascota: Mascota){
             mascotaLayoutBinding.tvNombre.text = mascota.nombre
@@ -39,7 +41,7 @@ class MascotaAdapter(val mascotas: List<Mascota>, val navController: NavControll
                     }
                     menu?.add(adapterPosition, 2, 2, "Eliminar")?.apply {
                         setOnMenuItemClickListener { menuItem ->
-                            MascotaDaoMemoria(idDueno).delete(mascotas[menuItem.groupId].id).also {
+                            MascotaDaoFirebase(idDueno).delete(mascotas[menuItem.groupId].id).also {
                                 notifyItemRemoved(menuItem.groupId)
                             }
 

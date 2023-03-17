@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.cadri.examen2.data.PersonaDaoFirebase
 import com.cadri.examen2.data.PersonaDaoMemoria
 import com.cadri.examen2.databinding.PersonaLayoutBinding
 import java.text.SimpleDateFormat
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat
 
 class PersonaAdapter(val personas: List<Persona>, val navController: NavController) :
     RecyclerView.Adapter<PersonaAdapter.PersonaViewHolder>() {
+
     inner class PersonaViewHolder(val personaLayoutBinding: PersonaLayoutBinding) :
         RecyclerView.ViewHolder(personaLayoutBinding.root), View.OnCreateContextMenuListener {
         val tvNombre: TextView = personaLayoutBinding.tvNombre
@@ -51,7 +53,7 @@ class PersonaAdapter(val personas: List<Persona>, val navController: NavControll
                     }
                     menu?.add(adapterPosition, 2, 2, "Eliminar")?.apply {
                         setOnMenuItemClickListener { menuItem ->
-                            PersonaDaoMemoria.delete(personas[menuItem.groupId].id).also {
+                            PersonaDaoFirebase.delete(personas[menuItem.groupId].id).also {
                                 notifyItemRemoved(menuItem.groupId)
                             }
 
@@ -85,6 +87,7 @@ class PersonaAdapter(val personas: List<Persona>, val navController: NavControll
             println("No hay persona en la posicion ${position}")
         } else {
             holder.bind(persona)
+            println("Persona bindeada $persona")
         }
 
     }
